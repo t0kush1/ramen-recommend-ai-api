@@ -1,4 +1,3 @@
-// src/providers/hotpepper.ts
 import fetch from "node-fetch";
 
 export type Shop = {
@@ -9,7 +8,7 @@ export type Shop = {
 export async function searchRamen(params: {
   districts: string[]; ramenTypes: string[]; minPrice?: number; maxPrice?: number;
 }): Promise<Shop[]> {
-  // 地区→最寄り駅/エリアコードにマッピングして複数回検索、マージ＆重複排除…
+  // 地区→最寄り駅/エリアコードにマッピングして複数回検索、マージ＆重複排除を行う
   console.log("検索パラメータ:", params);
   const ramenType = params.ramenTypes[0] || "";
   const district = params.districts[0] || "";

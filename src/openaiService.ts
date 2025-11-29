@@ -55,9 +55,9 @@ export async function recommendFromCandidates(
     return "候補データが空でした。外部APIから実在店舗候補を取得してから再実行してください。";
   }
 
-  // LLMに渡す “許可リスト”（この中からのみ選ばせる）
+  // LLMに渡す許可リスト（この中からのみ選択させる）
   const context = shops
-    .slice(0, 60) // トークン節約のため上限を設ける
+    .slice(0, 60) // トークン節約のため上限設定
     .map((s, i) =>
       [
         `${i + 1}.`,
