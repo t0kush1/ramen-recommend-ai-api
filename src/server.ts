@@ -8,12 +8,18 @@ import { searchRamen } from "./provider/hotpepper.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  "http://localhost:3000",
+];
+
+// Azure 本番URLが存在する場合のみ追加
+if (process.env.AZURE_FRONTEND_URL) {
+  allowedOrigins.push(process.env.AZURE_FRONTEND_URL);
+}
+
 // ミドルウェア設定
 app.use(cors({
-    origin: [
-      "http://localhost:3000",
-      "https://app-ramen-frontend.azurewebsites.net",
-    ],// フロントURL
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
 }));
 app.use(express.json());
