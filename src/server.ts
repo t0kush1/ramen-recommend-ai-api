@@ -19,8 +19,9 @@ if (process.env.AZURE_FRONTEND_URL) {
 
 // ミドルウェア設定
 app.use(cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
 }));
 app.use(express.json());
 
