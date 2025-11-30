@@ -6,11 +6,14 @@ import "dotenv/config";
 import { searchRamen } from "./provider/hotpepper.js";
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // ミドルウェア設定
 app.use(cors({
-    origin: ["http://localhost:3000"],// フロントURL
+    origin: [
+      "http://localhost:3000",
+      "https://app-ramen-frontend.azurewebsites.net",
+    ],// フロントURL
     methods: ["GET", "POST"],
 }));
 app.use(express.json());
